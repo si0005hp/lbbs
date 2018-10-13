@@ -10,3 +10,46 @@ body {
   font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
 }
 
+// postsContainer
+.postsContainer {
+  width: 730px;
+  margin: auto;
+}
+
+// post
+.post {
+  position: relative;
+  display: block;
+  width: 700px;
+  height: 150px;
+  margin-bottom: 20px;
+  padding: 15px;
+  box-shadow: 6px 6px 8px -4px rgba(0, 0, 0, 0.15);
+
+  .title {
+    color: #555;
+    font-size: 1.8rem;
+    line-height: 1.6;
+  }
+
+  .body {
+    color: #333;
+    margin-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .date {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    display: block;
+    width: 140px;
+    padding: 4px;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+}
