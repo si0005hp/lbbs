@@ -2,18 +2,22 @@ users = User.create!([
                        {
                          email: 'foo@mail.com',
                          password: 'foobar'
+                       },
+                       {
+                         email: 'bar@mail.com',
+                         password: 'foobar'
                        }
                      ])
 
 users.each do |u|
   u.posts.create!([
                     {
-                      title: 'This is the first sample',
-                      body: 'Hi, my name is foo.'
+                      title: "This is the first sample of user #{u.id}",
+                      body: "Hi, I'm user #{u.id}"
                     },
                     {
-                      title: 'This is the second sample',
-                      body: 'I\'m from Japan.'
+                      title: "This is the first sample of user #{u.id}",
+                      body: "I'm from Japan."
                     }
                   ])
 end
