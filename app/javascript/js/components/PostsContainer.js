@@ -12,11 +12,11 @@ class PostsContainer extends Component {
 
   componentDidMount() {
     axios.get('http://localhost:3000/posts.json')
-      .then(response => {
-        console.log(response)
-        this.setState({ posts: response.data })
+      .then(res => {
+        console.log(res)
+        this.setState({ posts: res.data })
       })
-      .catch(error => console.log(error))
+      .catch(error => AxiosUtils.fail(error))
   }
 
   render() {
