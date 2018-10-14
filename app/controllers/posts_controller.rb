@@ -2,7 +2,11 @@ class PostsController < ApplicationController
   protect_from_forgery except: [:create]
 
   def index
-    @posts = Post.order('created_at DESC')
+    @posts = if params[:user_id]
+               Post.where(user_id: params[:user_id]).order('created_at DESC')
+             else
+               Post.order('created_at DESC')
+             end
     render json: @posts
   end
 
