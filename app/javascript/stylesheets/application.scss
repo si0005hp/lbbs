@@ -14,6 +14,17 @@ body {
   box-sizing: border-box;
 }
 
+@mixin primary-btn {
+  padding: 0;
+  background-color: lightseagreen;
+  border-color: transparent;
+  color: #fff;
+  border-radius: 2px;
+  cursor: pointer;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
 // header
 .header {
   width: 100%;
@@ -50,17 +61,72 @@ body {
       #new-post-btn {
         width: 70px;
         height: 31px;
-        margin: 7px 0;
-        background-color: lightseagreen;
-        border-color: transparent;
-        color: #fff;
-        border-radius: 2px;
         font-size: 1.6rem;
-        cursor: pointer;
         line-height: 27px;
-        text-align: center;
-        letter-spacing: 1px;
+        margin: 7px 0;        
+        @include primary-btn();
       }
+    }
+  }
+}
+
+// NewPostModal
+.new-post-modal-content {
+  width: 660px;
+
+  .new-post-header {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+
+    h1 {
+      font-size: 1.8rem;
+      line-height: 30px;
+      display: inline-block;
+    }
+
+    span {
+      float: right;
+      font-size: 2.8rem;
+      line-height: 30px;
+      padding: 0 5px 0;
+      font-weight: bold;
+      color: #666;
+      cursor: pointer;
+    }
+  }
+
+  .new-post-form {
+    input[type=text], textarea {
+      width: 100%;
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      outline: none;
+      border: 0.5px solid lightgrey;
+      border-radius: 0;
+    }
+
+    input[type=text]:focus, textarea:focus {
+      box-shadow: 0 0 8px #3663B3 inset;
+    }
+
+    textarea {
+      height: 180px;
+    }
+  }
+
+  .new-post-toolbar {
+    width: 100%;
+    height: 30px;
+
+    button {
+      float: right;
+      width: 80px;
+      height: 100%;
+      font-size: 1.6rem;
+      line-height: 26px;
+      @include primary-btn();
     }
   }
 }

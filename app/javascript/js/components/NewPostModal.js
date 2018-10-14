@@ -9,12 +9,11 @@ const customStyles = {
     backgroundColor: "rgba(0, 0, 0, 0.5)"
   },
   content: {
-    top: "50%",
+    top: "25%",
     left: "50%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
-    padding: "15px",
     transform: "translate(-50%, -50%)"
   }
 };
@@ -22,24 +21,26 @@ const customStyles = {
 class NewPostModal extends React.Component {
   render() {
     return (
-      <div>
-        <Modal
-          isOpen={this.props.isModalOpen}
-          onRequestClose={this.props.closeModal}
-          style={customStyles}
-          contentLabel="NewPostModal">
+      <Modal
+        isOpen={this.props.isModalOpen}
+        onRequestClose={this.props.closeModal}
+        style={customStyles}
+        contentLabel="NewPostModal">
 
-          <h1 ref={subtitle => this.subtitle = subtitle}>New Post</h1>
-          <button onClick={this.props.closeModal}>Close</button>
-          <form>
+        <div className="new-post-modal-content">
+          <div className="new-post-header">
+            <h1 ref={subtitle => this.subtitle = subtitle}>New Post</h1>
+            <span onClick={this.props.closeModal}>×</span>
+          </div>
+          <form className="new-post-form">
             <input type="text" name="title" placeholder="Title" />
             <textarea name="body" placeholder="Content"></textarea>
           </form>
-          <div>
+          <div className="new-post-toolbar">
             <button>Submit</button>
           </div>
-        </Modal>
-      </div>
+        </div>
+      </Modal>
     )
   }
 }
