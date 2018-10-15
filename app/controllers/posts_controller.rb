@@ -2,12 +2,7 @@ class PostsController < ApplicationController
   protect_from_forgery except: [:create]
 
   def index
-    @posts = if params[:user_id]
-               Post.where(user_id: params[:user_id]).order('created_at DESC')
-             else
-               Post.order('created_at DESC')
-             end
-    render json: @posts
+    render json: posts(nil)
   end
 
   def create
@@ -15,9 +10,25 @@ class PostsController < ApplicationController
     render json: @post
   end
 
+  # user
+  def posts_by_user
+    @user_id = params[:user_id]
+    raise 'user_id was not given' unless @user_id
+
+    render json: posts(@user_id)
+  end
+
   private
 
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def posts(user_id)
+    if user_id
+      Post.where(user_id: params[:user_id]).order('created_at DESC')
+    else
+      Post.order('created_at DESC')
+    end
   end
 end
