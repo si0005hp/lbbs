@@ -24,7 +24,7 @@ class Header extends Component {
         <div className="global-nav-container">
           <nav className="nav-left">
             <ul>
-              <li className="nav-item active"><a>HOME</a></li>
+              <li className="nav-item active"><a href="/">HOME</a></li>
               <li className="nav-item"><a>MY POSTS</a></li>
             </ul>
           </nav>
