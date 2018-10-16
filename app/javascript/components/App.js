@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
-import Header from './components/Header';
-import PostsContainer from './components/PostsContainer';
+import Header from './Header';
+import PostsContainer from './PostsContainer';
 
 class App extends Component {
   render() {
@@ -14,4 +14,5 @@ class App extends Component {
   }
 }
 
-ReactDom.render(<App />, document.getElementById('root'))
+// ReactDom.render(<App />, document.getElementById('root'))
+export default App
