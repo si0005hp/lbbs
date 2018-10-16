@@ -1,4 +1,4 @@
 <div id="root"></div>
 <%= stylesheet_pack_tag 'application' %>
 <%= javascript_pack_tag 'application' %>
-<%= react_component('App') %>
+<%= react_component('App', userId: current_user.id) %>

@@ -7,8 +7,8 @@ class App extends Component {
   render() {
     return (
       <div className="main">
-        <Header />
-        <PostsContainer />
+        <Header userId={this.props.userId} />
+        <PostsContainer userId={this.props.userId} />
       </div>
     )
   }
