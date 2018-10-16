@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  # main
   root 'main#index'
+  get '/i/posts', to: 'main#my_posts'
+
   devise_for :users
 
   # posts

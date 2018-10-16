@@ -12,7 +12,16 @@ class PostsContainer extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/posts.json')
+    const userId = this.props.userId
+    const apiUrl = userId == null ?
+      'http://localhost:3000/posts.json' :
+      `http://localhost:3000/posts/user/${userId}`
+
+    this.loadPosts(apiUrl)
+  }
+
+  loadPosts(apiUrl) {
+    axios.get(apiUrl)
       .then(res => {
         console.log(res)
         this.setState({ posts: res.data })

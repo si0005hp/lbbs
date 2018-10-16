@@ -25,7 +25,7 @@ class Header extends Component {
           <nav className="nav-left">
             <ul>
               <li className="nav-item active"><a href="/">HOME</a></li>
-              <li className="nav-item"><a>MY POSTS</a></li>
+              <li className="nav-item"><a href="/i/posts">MY POSTS</a></li>
             </ul>
           </nav>
           <nav className="nav-right">
