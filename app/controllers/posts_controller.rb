@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   protect_from_forgery except: [:create]
 
+  ########## backend API ##########
   def index
     render json: posts(nil)
   end
@@ -10,12 +11,15 @@ class PostsController < ApplicationController
     render json: @post
   end
 
-  # user
   def posts_by_user
     @user_id = params[:user_id]
     raise 'user_id was not given' unless @user_id
 
     render json: posts(@user_id)
+  end
+
+  ########## frontend API ##########
+  def show
   end
 
   private

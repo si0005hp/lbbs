@@ -1,4 +1,2 @@
-<div id="root"></div>
-<%= stylesheet_pack_tag 'application' %>
-<%= javascript_pack_tag 'application' %>
-<%= react_component('App', userId: @userId) %>
+<%= render 'base' %>
+<%= react_component('PostsContainer', userId: @userId) %>
