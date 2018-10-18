@@ -6,10 +6,10 @@ class PostDetail extends Component {
 
   render() {
     return (
-      <div className="post-detail">
-        <h1>{this.props.post.title}</h1>
-        <h1>{this.props.post.body}</h1>
-        <h1>{MomentUtils.fmtDate(this.props.post.created_at)}</h1>
+      <div className="post-detail clearfix">
+        <h1 className="title">{this.props.post.title}</h1>
+        <p className="body">{this.props.post.body}</p>
+        <time className="date">{MomentUtils.fmtDate(this.props.post.created_at)}</time>
       </div>
     )
   }

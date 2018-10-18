@@ -14,6 +14,12 @@ body {
   box-sizing: border-box;
 }
 
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
 @mixin primary-btn {
   padding: 0;
   background-color: lightseagreen;
@@ -27,6 +33,12 @@ body {
   &:disabled {
     background-color: #cccccc; 
   }
+}
+
+@mixin date {
+  padding: 4px;
+  letter-spacing: 1px;
+  font-weight: bold;
 }
 
 // header
@@ -171,12 +183,38 @@ body {
     position: absolute;
     right: 15px;
     bottom: 15px;
-    display: block;
     width: 140px;
-    padding: 4px;
-    text-align: center;
-    letter-spacing: 1px;
-    font-weight: bold;
     font-size: 1.1rem;
+    text-align: center;
+    display: block;
+    @include date();
   }
+}
+
+// post-detail
+.post-detail {
+  width: 700px;
+  margin: auto;
+
+  .title {
+    color: #555;
+    font-size: 2.4rem;
+    text-decoration: none;
+    margin: 20px 0;
+  }
+
+  .body {
+    color: #333;
+    font-size: 2.0rem;
+    margin: 25px 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .date {
+    font-size: 1.2rem;
+    float: right;
+    @include date();
+  }
+
 }
