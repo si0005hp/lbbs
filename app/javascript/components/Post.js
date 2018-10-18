@@ -10,7 +10,9 @@ class Post extends Component {
   render() {
     return (
       <div className="post" >
-        <h1 className="title">{this.props.post.title}</h1>
+        <a className="title" href={"/posts/" + this.props.post.id} target="_blank">
+          <h1>{this.props.post.title}</h1>
+        </a>
         <p className="body">{this.props.post.body}</p>
         <time className="date">{this.fmtDate(this.props.post.created_at)}</time>
       </div>
