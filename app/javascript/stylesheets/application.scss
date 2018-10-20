@@ -169,14 +169,27 @@ body {
     font-size: 1.8rem;
     line-height: 1.6;
     text-decoration: none;
+    max-height: 56px;
+    display: inline-block;
   }
 
   .body {
     color: #333;
-    margin-top: 5px;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    margin-top: 4px;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: pre-wrap;
+  }
+
+  .post-content {
+    overflow: hidden;
+    height: 130px;
+  }
+
+  .clamp {
+    font-size: 1.4rem;
   }
 
   .date {
