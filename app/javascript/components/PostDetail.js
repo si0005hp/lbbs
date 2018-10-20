@@ -22,7 +22,12 @@ class PostDetail extends Component {
         <div className="post-detail-replies">
           <hr />
           {this.state.replies.map((reply) => {
-            return (<Reply reply={reply} key={reply.id} />)
+            return (
+              <div>
+                <Reply reply={reply} key={reply.id} />
+                <hr />
+              </div>
+            )
           })}
         </div>
       </div>
