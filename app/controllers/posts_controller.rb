@@ -21,6 +21,7 @@ class PostsController < ApplicationController
   ########## frontend API ##########
   def show
     @post = Post.find(params[:id])
+    @replies = @post.replies
   end
 
   private
