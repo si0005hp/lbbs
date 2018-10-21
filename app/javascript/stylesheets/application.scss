@@ -258,6 +258,14 @@ body {
       @include post-detail-action-btn();
     }
 
+    input[type=text] {
+      @include title-editbox();
+    }
+
+    textarea {
+      @include body-editbox();
+    }
+
   }
 
   .post-reply {
