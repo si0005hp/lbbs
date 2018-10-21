@@ -41,6 +41,29 @@ body {
   font-weight: bold;
 }
 
+@mixin editbox {
+  width: 100%;
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  outline: none;
+  border: 0.5px solid lightgrey;
+  border-radius: 0;
+  resize: vertical;
+  &:focus {
+    box-shadow: 0 0 8px #3663B3 inset;
+  }
+}
+
+@mixin title-editbox {
+  @include editbox();
+}
+
+@mixin body-editbox {
+  @include editbox();
+  height: 180px;
+}
+
 // header
 .header {
   width: 100%;
@@ -114,22 +137,12 @@ body {
   }
 
   .new-post-form {
-    input[type=text], textarea {
-      width: 100%;
-      display: block;
-      margin: 10px 0;
-      padding: 10px;
-      outline: none;
-      border: 0.5px solid lightgrey;
-      border-radius: 0;
-    }
-
-    input[type=text]:focus, textarea:focus {
-      box-shadow: 0 0 8px #3663B3 inset;
+    input[type=text] {
+      @include title-editbox();
     }
 
     textarea {
-      height: 180px;
+      @include body-editbox();
     }
   }
 
