@@ -20,11 +20,9 @@ body {
   clear: both;
 }
 
-@mixin primary-btn {
+@mixin color-btn {
   padding: 0;
-  background-color: lightseagreen;
   border-color: transparent;
-  color: #fff;
   border-radius: 2px;
   cursor: pointer;
   text-align: center;
@@ -33,6 +31,18 @@ body {
   &:disabled {
     background-color: #cccccc; 
   }
+}
+
+@mixin primary-btn {
+  @include color-btn();
+  background-color: lightseagreen;
+  color: #fff;
+}
+
+@mixin normal-btn {
+  @include color-btn();
+  background-color: #cdd0d3;
+  color: rgb(31, 23, 23);
 }
 
 @mixin date {
