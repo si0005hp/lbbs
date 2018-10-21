@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import MomentUtils from '../biz/moment-utils'
 import Reply from './Reply';
+import axios from 'axios'
+import AxiosUtils from '../biz/axios-utils'
 
 
 class PostDetail extends Component {
@@ -46,6 +48,24 @@ class PostDetail extends Component {
   validateOnInput = () => {
   }
 
+  handleSubmit = (e) => {
+    if (!window.confirm('Update the post?')) {
+      return
+    }
+    axios.put(`http://localhost:3000/posts/${this.props.post.id}`,
+      {
+        post: {
+          title: this.state.title,
+          body: this.state.body
+        }
+      })
+      .then(res => {
+        console.log(res)
+        location.reload()
+      })
+      .catch(error => AxiosUtils.fail(error))
+  }
+
   render() {
     return (
       <div className="post-detail">
@@ -87,7 +107,8 @@ class PostDetail extends Component {
           <div className="clearfix">
             <button id="post-detail-editing-cancel-btn"
               onClick={this.cancelEditing}>CANCEL</button>
-            <button id="post-detail-editing-update-btn">UPDATE</button>
+            <button id="post-detail-editing-update-btn"
+              onClick={this.handleSubmit}>UPDATE</button>
           </div>
         </div>
       ) :

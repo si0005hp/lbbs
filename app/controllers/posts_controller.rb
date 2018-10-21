@@ -11,6 +11,12 @@ class PostsController < ApplicationController
     render json: @post
   end
 
+  def update
+    @post = Post.find(params[:id])
+    @post.update_attributes(post_params)
+    render json: @post
+  end
+
   def posts_by_user
     @user_id = params[:user_id]
     raise 'user_id was not given' unless @user_id
