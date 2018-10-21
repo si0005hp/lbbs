@@ -23,8 +23,8 @@ class PostDetail extends Component {
           <hr />
           {this.state.replies.map((reply) => {
             return (
-              <div>
-                <Reply reply={reply} key={reply.id} />
+              <div key={reply.id}>
+                <Reply reply={reply} />
                 <hr />
               </div>
             )
