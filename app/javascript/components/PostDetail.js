@@ -84,9 +84,10 @@ class PostDetail extends Component {
           <textarea name="body"
             value={this.state.body}
             onChange={this.handleInput} />
-          <div>
-            <button>UPDATE</button>
-            <button onClick={this.cancelEditing}>CANCEL</button>
+          <div className="clearfix">
+            <button id="post-detail-editing-cancel-btn"
+              onClick={this.cancelEditing}>CANCEL</button>
+            <button id="post-detail-editing-update-btn">UPDATE</button>
           </div>
         </div>
       ) :

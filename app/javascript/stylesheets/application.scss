@@ -276,6 +276,24 @@ body {
       @include body-editbox();
     }
 
+    #post-detail-editing-update-btn {
+      float: right;
+      width: 70px;
+      font-size: 1.2rem;
+      line-height: 2;
+      margin: 0 2px 12px 0;
+      @include primary-btn();
+    }
+
+    #post-detail-editing-cancel-btn {
+      float: right;
+      width: 70px;
+      font-size: 1.2rem;
+      line-height: 2;
+      margin-bottom: 12px;        
+      @include normal-btn();
+    }
+
   }
 
   .post-reply {
