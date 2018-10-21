@@ -4,11 +4,33 @@ import MomentUtils from '../biz/moment-utils'
 
 class Reply extends Component {
 
+  componentDidMount() {
+    this.setActionBtnVisible()
+  }
+
+  isMyReply() {
+    return this.props.userId === this.props.reply.user_id
+  }
+
+  setActionBtnVisible() {
+    if (this.isMyReply()) {
+      let replyElm = document.getElementById(`reply-${this.props.reply.id}`)
+      let btnElms = replyElm.getElementsByClassName('post-reply-action-btn')
+      for (let btn of btnElms) {
+        btn.hidden = false
+      }
+    }
+  }
+
   render() {
     return (
-      <div className="reply clearfix" id={this.props.reply.id} >
+      <div className="post-reply clearfix" id={`reply-${this.props.reply.id}`} >
         <p className="body">{this.props.reply.body}</p>
-        <time className="date">{MomentUtils.fmtDate(this.props.reply.created_at)}</time>
+        <div className="post-reply-footer clearfix">
+          <a className="post-reply-action-btn" href="" hidden>Edit</a>
+          <a className="post-reply-action-btn" href="" hidden>Delete</a>
+          <time className="date">{MomentUtils.fmtDate(this.props.reply.created_at)}</time>
+        </div>
       </div>
     )
   }

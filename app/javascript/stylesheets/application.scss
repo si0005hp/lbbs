@@ -241,18 +241,17 @@ body {
       @include date();
     }
 
-    .post-detail-reply-btn,
-    .post-detail-edit-btn,
-    .post-detail-delete-btn {
+    .post-detail-action-btn {
       @include post-detail-action-btn();
     }
 
   }
 
-  .reply {
+  .post-reply {
     .body {
       color: #333;
       font-size: 1.4rem;
+      margin: 15px 0;
       white-space: pre-wrap;
       word-wrap: break-word;
     }
@@ -261,6 +260,10 @@ body {
       font-size: 1.2rem;
       float: right;
       @include date();
+    }
+
+    .post-reply-action-btn {
+      @include post-detail-action-btn();
     }
   }
 

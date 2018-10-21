@@ -8,7 +8,7 @@ class Post extends Component {
   }
 
   setClampVisible() {
-    let postElm = document.getElementById(this.props.post.id)
+    let postElm = document.getElementById(`reply-${this.props.post.id}`)
     let postContentElm = postElm.getElementsByClassName('post-content')[0]
 
     let titleElm = postContentElm.getElementsByClassName('title')[0]
@@ -26,7 +26,7 @@ class Post extends Component {
 
   render() {
     return (
-      <div className="post" id={this.props.post.id} >
+      <div className="post" id={`reply-${this.props.post.id}`} >
         <div className="post-content">
           <a className="title" href={"/posts/" + this.props.post.id} target="_blank">
             <h1>{this.props.post.title}</h1>
