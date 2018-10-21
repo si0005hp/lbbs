@@ -209,6 +209,16 @@ body {
   width: 700px;
   margin: auto;
 
+  @mixin post-detail-action-btn {
+    padding: 4px;
+    float: left;
+    text-decoration: none;
+    &:hover {
+      color: #23527c;
+      text-decoration: underline;
+    }
+  }
+
   .post-detail-root {
     .title {
       color: #555;
@@ -230,6 +240,13 @@ body {
       float: right;
       @include date();
     }
+
+    .post-detail-reply-btn,
+    .post-detail-edit-btn,
+    .post-detail-delete-btn {
+      @include post-detail-action-btn();
+    }
+
   }
 
   .reply {

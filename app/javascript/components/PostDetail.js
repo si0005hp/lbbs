@@ -17,7 +17,12 @@ class PostDetail extends Component {
         <div className="post-detail-root clearfix">
           <h1 className="title">{this.props.post.title}</h1>
           <p className="body">{this.props.post.body}</p>
-          <time className="date">{MomentUtils.fmtDate(this.props.post.created_at)}</time>
+          <div className="post-detail-footer clearfix">
+            <a className="post-detail-reply-btn" href="">Reply</a>
+            <a className="post-detail-edit-btn" href="">Edit</a>
+            <a className="post-detail-delete-btn" href="">Delete</a>
+            <time className="date">{MomentUtils.fmtDate(this.props.post.created_at)}</time>
+          </div>
         </div>
         <div className="post-detail-replies">
           <hr />
