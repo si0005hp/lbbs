@@ -41,6 +41,6 @@ end
 
 posts = Post.order('created_at DESC').take(2)
 posts.each do |p|
-  p.replies.create!(body: "This is the sample reply to post #{p.id}",
-                    user_id: p.user_id)
+  p.replies.create!(body: "This is the sample reply 1 to post #{p.id}", user_id: p.user_id)
+  p.replies.create!(body: "This is the sample reply 2 to post #{p.id}", user_id: p.user_id)
 end
