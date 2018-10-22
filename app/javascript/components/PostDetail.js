@@ -98,10 +98,10 @@ class PostDetail extends Component {
         <div className="post-detail-root clearfix">
           {this.postDetailEditableParts()}
           <div className="post-detail-footer clearfix">
-            <a id="post-detail-reply-btn" className="post-detail-action-btn" href="">Reply</a>
+            <a id="post-detail-reply-btn" className="post-detail-action-btn">Reply</a>
             <a id="post-detail-edit-btn" className="post-detail-action-btn" hidden
               onClick={this.toggleEditing}>Edit</a>
-            <a id="post-detail-delete-btn" className="post-detail-action-btn" href="" hidden>Delete</a>
+            <a id="post-detail-delete-btn" className="post-detail-action-btn" hidden>Delete</a>
             <time className="date">{MomentUtils.fmtDate(this.props.post.created_at)}</time>
           </div>
         </div>

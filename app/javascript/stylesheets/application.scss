@@ -233,9 +233,11 @@ body {
   margin: auto;
 
   @mixin post-detail-action-btn {
-    padding: 4px;
     float: left;
+    color: #337ab7;
     text-decoration: none;
+    cursor: pointer;
+    font-size: 1.2rem;
     &:hover {
       color: #23527c;
       text-decoration: underline;
@@ -264,8 +266,15 @@ body {
       @include date();
     }
 
-    .post-detail-action-btn {
+    #post-detail-reply-btn {
       @include post-detail-action-btn();
+      padding: 4px 4px 4px 0;
+    }
+
+    #post-detail-edit-btn,
+    #post-detail-delete-btn {
+      @include post-detail-action-btn();
+      padding: 4px;
     }
 
     input[type=text] {
