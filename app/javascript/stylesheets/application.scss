@@ -320,8 +320,14 @@ body {
       @include date();
     }
 
-    .post-reply-action-btn {
+    .post-reply-edit-btn {
       @include post-detail-action-btn();
+      padding: 4px 4px 4px 0;
+    }
+
+    .post-reply-delete-btn {
+      @include post-detail-action-btn();
+      padding: 4px;
     }
   }
 

@@ -27,8 +27,8 @@ class Reply extends Component {
       <div className="post-reply clearfix" id={`reply-${this.props.reply.id}`} >
         <p className="body">{this.props.reply.body}</p>
         <div className="post-reply-footer clearfix">
-          <a className="post-reply-action-btn" href="" hidden>Edit</a>
-          <a className="post-reply-action-btn" href="" hidden>Delete</a>
+          <a className="post-reply-edit-btn post-reply-action-btn" hidden>Edit</a>
+          <a className="post-reply-delete-btn post-reply-action-btn" hidden>Delete</a>
           <time className="date">{MomentUtils.fmtDate(this.props.reply.created_at)}</time>
         </div>
       </div>
