@@ -8,6 +8,9 @@ import AxiosUtils from '../biz/axios-utils'
 class PostDetail extends Component {
   constructor(props) {
     super(props)
+    this.originalTitle = props.post.title
+    this.originalBody = props.post.body
+
     this.state = {
       replies: props.replies,
       isEditing: false,
@@ -32,13 +35,36 @@ class PostDetail extends Component {
   }
 
   toggleEditing = (e) => {
+    if (this.state.isEditing && !this.canProceedToCancel()) {
+      return
+    }
+    this.resetPostConent()
     this.setState(prevState => ({
       isEditing: !prevState.isEditing
     }));
   }
 
   cancelEditing = (e) => {
-    this.setState({ isEditing: false })
+    if (this.canProceedToCancel()) {
+      this.resetPostConent()
+      this.setState({ isEditing: false })
+    }
+  }
+
+  canProceedToCancel() {
+    if (this.isPostConentChanged() &&
+      !window.confirm('The change will be lost. Are you sure to cancel?')) {
+      return false
+    }
+    return true
+  }
+
+  isPostConentChanged() {
+    return this.state.title !== this.originalTitle || this.state.body !== this.originalBody
+  }
+
+  resetPostConent() {
+    this.setState({ title: this.originalTitle, body: this.originalBody })
   }
 
   handleInput = (e) => {
