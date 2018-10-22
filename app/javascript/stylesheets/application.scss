@@ -244,6 +244,24 @@ body {
     }
   }
 
+  @mixin post-detail-editing-update-btn {
+    float: right;
+    width: 70px;
+    font-size: 1.2rem;
+    line-height: 2;
+    margin: 0 2px 12px 0;
+    @include primary-btn();
+  }
+
+  @mixin post-detail-editing-cancel-btn {
+    float: right;
+    width: 70px;
+    font-size: 1.2rem;
+    line-height: 2;
+    margin-bottom: 12px;        
+    @include normal-btn();
+  }
+
   .post-detail-root {
     .title {
       color: #555;
@@ -286,21 +304,11 @@ body {
     }
 
     #post-detail-editing-update-btn {
-      float: right;
-      width: 70px;
-      font-size: 1.2rem;
-      line-height: 2;
-      margin: 0 2px 12px 0;
-      @include primary-btn();
+      @include post-detail-editing-update-btn();
     }
 
     #post-detail-editing-cancel-btn {
-      float: right;
-      width: 70px;
-      font-size: 1.2rem;
-      line-height: 2;
-      margin-bottom: 12px;        
-      @include normal-btn();
+      @include post-detail-editing-cancel-btn();
     }
 
   }
@@ -328,6 +336,18 @@ body {
     .post-reply-delete-btn {
       @include post-detail-action-btn();
       padding: 4px;
+    }
+
+    textarea {
+      @include body-editbox();
+    }
+
+    .post-reply-editing-update-btn {
+      @include post-detail-editing-update-btn();
+    }
+
+    .post-reply-editing-cancel-btn {
+      @include post-detail-editing-cancel-btn();
     }
   }
 

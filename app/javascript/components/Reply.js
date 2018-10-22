@@ -97,9 +97,9 @@ class Reply extends Component {
             value={this.state.body}
             onChange={this.handleInput} />
           <div className="clearfix">
-            <button id="post-reply-editing-cancel-btn"
+            <button className="post-reply-editing-cancel-btn"
               onClick={this.cancelEditing}>CANCEL</button>
-            <button id="post-reply-editing-update-btn"
+            <button className="post-reply-editing-update-btn"
               onClick={this.handleSubmit}>UPDATE</button>
           </div>
         </div>
