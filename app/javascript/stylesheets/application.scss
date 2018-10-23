@@ -351,4 +351,18 @@ body {
     }
   }
 
+  .post-detail-replying {
+    textarea {
+      @include body-editbox();
+    }
+
+    #post-detail-replying-update-btn {
+      @include post-detail-editing-update-btn();
+    }
+
+    #post-detail-replying-cancel-btn {
+      @include post-detail-editing-cancel-btn();
+    }
+  }
+
 }

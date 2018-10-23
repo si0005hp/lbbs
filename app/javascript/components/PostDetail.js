@@ -209,9 +209,9 @@ class PostDetail extends Component {
             value={this.state.preparingReplyBody}
             onChange={this.handleInput} />
           <div className="clearfix">
-            <button id="post-detail-editing-cancel-btn"
+            <button id="post-detail-replying-cancel-btn"
               onClick={this.cancelReplying}>CANCEL</button>
-            <button id="post-detail-editing-update-btn"
+            <button id="post-detail-replying-update-btn"
               onClick={this.handleNewSubmit}>SUBMIT</button>
           </div>
         </div>
