@@ -92,6 +92,18 @@ class PostDetail extends Component {
       .catch(error => AxiosUtils.fail(error))
   }
 
+  handleDelSubmit = (e) => {
+    if (!window.confirm('Delete the post?')) {
+      return
+    }
+    axios.delete(`http://localhost:3000/posts/${this.props.post.id}`)
+      .then(res => {
+        console.log(res)
+        location.replace('/')
+      })
+      .catch(error => AxiosUtils.fail(error))
+  }
+
   render() {
     return (
       <div className="post-detail">
@@ -101,7 +113,8 @@ class PostDetail extends Component {
             <a id="post-detail-reply-btn" className="post-detail-action-btn">Reply</a>
             <a id="post-detail-edit-btn" className="post-detail-action-btn" hidden
               onClick={this.toggleEditing}>Edit</a>
-            <a id="post-detail-delete-btn" className="post-detail-action-btn" hidden>Delete</a>
+            <a id="post-detail-delete-btn" className="post-detail-action-btn" hidden
+              onClick={this.handleDelSubmit}>Delete</a>
             <time className="date">{MomentUtils.fmtDate(this.props.post.created_at)}</time>
           </div>
         </div>
