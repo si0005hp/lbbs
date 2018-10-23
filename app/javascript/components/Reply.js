@@ -90,6 +90,18 @@ class Reply extends Component {
       .catch(error => AxiosUtils.fail(error))
   }
 
+  handleDelSubmit = (e) => {
+    if (!window.confirm('Delete the reply?')) {
+      return
+    }
+    axios.delete(`http://localhost:3000/replies/${this.props.reply.id}`)
+      .then(res => {
+        console.log(res)
+        location.reload()
+      })
+      .catch(error => AxiosUtils.fail(error))
+  }
+
   render() {
     return (
       <div className="post-reply clearfix" id={`reply-${this.props.reply.id}`} >
@@ -97,7 +109,8 @@ class Reply extends Component {
         <div className="post-reply-footer clearfix">
           <a className="post-reply-edit-btn post-reply-action-btn" hidden
             onClick={this.toggleEditing}>Edit</a>
-          <a className="post-reply-delete-btn post-reply-action-btn" hidden>Delete</a>
+          <a className="post-reply-delete-btn post-reply-action-btn" hidden
+            onClick={this.handleDelSubmit}>Delete</a>
           <time className="date">{MomentUtils.fmtDate(this.props.reply.created_at)}</time>
         </div>
       </div>
