@@ -36,7 +36,7 @@ class PostsController < ApplicationController
   ########## frontend API ##########
   def show
     @post = Post.find(params[:id])
-    @replies = @post.replies.order('created_at DESC')
+    @replies = @post.replies.order('created_at')
     @user_id = current_user.id
   end
 

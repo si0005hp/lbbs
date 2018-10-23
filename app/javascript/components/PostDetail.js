@@ -133,7 +133,8 @@ class PostDetail extends Component {
     axios.post(`http://localhost:3000/replies`,
       {
         reply: {
-          body: this.state.preparingReplyBody
+          body: this.state.preparingReplyBody,
+          post_id: this.props.post.id
         }
       })
       .then(res => {
