@@ -74,7 +74,7 @@ class PostDetail extends Component {
   validateOnInput = () => {
   }
 
-  handleSubmit = (e) => {
+  handleUpdSubmit = (e) => {
     if (!window.confirm('Update the post?')) {
       return
     }
@@ -134,7 +134,7 @@ class PostDetail extends Component {
             <button id="post-detail-editing-cancel-btn"
               onClick={this.cancelEditing}>CANCEL</button>
             <button id="post-detail-editing-update-btn"
-              onClick={this.handleSubmit}>UPDATE</button>
+              onClick={this.handleUpdSubmit}>UPDATE</button>
           </div>
         </div>
       ) :

@@ -46,7 +46,7 @@ class NewPostModal extends React.Component {
     }
   }
 
-  handleSubmit = (e) => {
+  handleNewSubmit = (e) => {
     if (!window.confirm('Submit new post?')) {
       return
     }
@@ -89,7 +89,7 @@ class NewPostModal extends React.Component {
           </form>
           <div className="new-post-toolbar">
             <button id="new-post-submit-btn"
-              onClick={this.handleSubmit}
+              onClick={this.handleNewSubmit}
             >Submit</button>
           </div>
         </div>

@@ -73,7 +73,7 @@ class Reply extends Component {
   validateOnInput = () => {
   }
 
-  handleSubmit = (e) => {
+  handleUpdSubmit = (e) => {
     if (!window.confirm('Update the reply?')) {
       return
     }
@@ -115,7 +115,7 @@ class Reply extends Component {
             <button className="post-reply-editing-cancel-btn"
               onClick={this.cancelEditing}>CANCEL</button>
             <button className="post-reply-editing-update-btn"
-              onClick={this.handleSubmit}>UPDATE</button>
+              onClick={this.handleUpdSubmit}>UPDATE</button>
           </div>
         </div>
       ) :
