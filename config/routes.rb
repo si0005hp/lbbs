@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   # posts
   resources :posts
   get 'posts/user/:user_id', to: 'posts#posts_by_user'
+
+  # reply
+  resources :replies
 end

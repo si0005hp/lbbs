@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import MomentUtils from '../biz/moment-utils'
+import axios from 'axios'
+import AxiosUtils from '../biz/axios-utils'
 
 
 class Reply extends Component {
@@ -72,7 +74,20 @@ class Reply extends Component {
   }
 
   handleSubmit = (e) => {
-    alert('Not implemented yet.')
+    if (!window.confirm('Update the reply?')) {
+      return
+    }
+    axios.put(`http://localhost:3000/replies/${this.props.reply.id}`,
+      {
+        reply: {
+          body: this.state.body
+        }
+      })
+      .then(res => {
+        console.log(res)
+        location.reload()
+      })
+      .catch(error => AxiosUtils.fail(error))
   }
 
   render() {
