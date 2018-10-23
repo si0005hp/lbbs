@@ -12,10 +12,12 @@ class PostDetail extends Component {
     this.originalBody = props.post.body
 
     this.state = {
+      title: props.post.title,
+      body: props.post.body,
       replies: props.replies,
       isEditing: false,
-      title: props.post.title,
-      body: props.post.body
+      isReplying: false,
+      preparingReplyBody: ''
     }
   }
 
@@ -35,7 +37,7 @@ class PostDetail extends Component {
   }
 
   toggleEditing = (e) => {
-    if (this.state.isEditing && !this.canProceedToCancel()) {
+    if (this.state.isEditing && !this.canProceedToCancel(this.isPostConentChanged)) {
       return
     }
     this.resetPostConent()
@@ -45,21 +47,21 @@ class PostDetail extends Component {
   }
 
   cancelEditing = (e) => {
-    if (this.canProceedToCancel()) {
+    if (this.canProceedToCancel(this.isPostConentChanged)) {
       this.resetPostConent()
       this.setState({ isEditing: false })
     }
   }
 
-  canProceedToCancel() {
-    if (this.isPostConentChanged() &&
+  canProceedToCancel(isContentChanged) {
+    if (isContentChanged() &&
       !window.confirm('The change will be lost. Are you sure to cancel?')) {
       return false
     }
     return true
   }
 
-  isPostConentChanged() {
+  isPostConentChanged = () => {
     return this.state.title !== this.originalTitle || this.state.body !== this.originalBody
   }
 
@@ -104,13 +106,51 @@ class PostDetail extends Component {
       .catch(error => AxiosUtils.fail(error))
   }
 
+  toggleReplying = (e) => {
+    if (this.state.isReplying && !this.canProceedToCancel(this.isPreparingReplyConentChanged)) {
+      return
+    }
+    this.setState({ preparingReplyBody: '' })
+    this.setState(prevState => ({
+      isReplying: !prevState.isReplying
+    }));
+  }
+
+  cancelReplying = (e) => {
+    if (this.canProceedToCancel(this.isPreparingReplyConentChanged)) {
+      this.setState({ preparingReplyBody: '', isReplying: false })
+    }
+  }
+
+  isPreparingReplyConentChanged = () => {
+    return this.state.preparingReplyBody !== ''
+  }
+
+  handleNewSubmit = (e) => {
+    if (!window.confirm('Submit new reply?')) {
+      return
+    }
+    axios.post(`http://localhost:3000/replies`,
+      {
+        reply: {
+          body: this.state.preparingReplyBody
+        }
+      })
+      .then(res => {
+        console.log(res)
+        location.reload()
+      })
+      .catch(error => AxiosUtils.fail(error))
+  }
+
   render() {
     return (
       <div className="post-detail">
         <div className="post-detail-root clearfix">
           {this.postDetailEditableParts()}
           <div className="post-detail-footer clearfix">
-            <a id="post-detail-reply-btn" className="post-detail-action-btn">Reply</a>
+            <a id="post-detail-reply-btn" className="post-detail-action-btn"
+              onClick={this.toggleReplying}>Reply</a>
             <a id="post-detail-edit-btn" className="post-detail-action-btn" hidden
               onClick={this.toggleEditing}>Edit</a>
             <a id="post-detail-delete-btn" className="post-detail-action-btn" hidden
@@ -129,6 +169,7 @@ class PostDetail extends Component {
             )
           })}
         </div>
+        {this.preparingReply()}
       </div>
     )
   }
@@ -157,6 +198,24 @@ class PostDetail extends Component {
           <p className="body">{this.props.post.body}</p>
         </div>
       )
+  }
+
+  preparingReply() {
+    if (this.state.isReplying) {
+      return (
+        <div className="post-detail-replying">
+          <textarea name="preparingReplyBody"
+            value={this.state.preparingReplyBody}
+            onChange={this.handleInput} />
+          <div className="clearfix">
+            <button id="post-detail-editing-cancel-btn"
+              onClick={this.cancelReplying}>CANCEL</button>
+            <button id="post-detail-editing-update-btn"
+              onClick={this.handleNewSubmit}>SUBMIT</button>
+          </div>
+        </div>
+      )
+    }
   }
 }
 
