@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
-  # main
-  root 'main#index'
-  get '/i/posts', to: 'main#my_posts'
-
+  # users (devise)
   devise_for :users
 
   # posts
   resources :posts
-  get 'posts/user/:user_id', to: 'posts#posts_by_user'
+  root 'posts#index'
+  get '/i/posts', to: 'posts#my_posts_index'
 
   # reply
   resources :replies

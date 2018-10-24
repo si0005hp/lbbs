@@ -60,3 +60,5 @@ gem 'react-rails'
 group :development do
   gem 'foreman'
 end
+
+gem 'will_paginate'
