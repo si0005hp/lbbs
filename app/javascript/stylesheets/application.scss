@@ -366,3 +366,28 @@ body {
   }
 
 }
+
+.pagination {
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  display: inline-block;
+  border-radius: 2px;
+  margin: 15px 0;
+
+  a, em, span {
+    color: #666;
+    float: left;
+    text-decoration: none;
+    // border: 1px solid #ddd;
+    padding: 10px;
+  }
+
+  span {
+    cursor: not-allowed;
+  }
+
+  .current {
+    border-color: #d9edf7;
+    background-color: #d9edf7;
+  }
+}
