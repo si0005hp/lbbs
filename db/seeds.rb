@@ -1,9 +1,11 @@
 users = User.create!([
                        {
+                         name: 'foo',
                          email: 'foo@mail.com',
                          password: 'foobar'
                        },
                        {
+                         name: 'bar',
                          email: 'bar@mail.com',
                          password: 'foobar'
                        }
