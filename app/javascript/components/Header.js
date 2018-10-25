@@ -39,8 +39,8 @@ class Header extends Component {
           <NewPostModal
             openModal={this.openModal}
             closeModal={this.closeModal}
-            isModalOpen={this.state.isModalOpen}
-          />}
+            isModalOpen={this.state.isModalOpen} />
+        }
       </header>
     )
   }
