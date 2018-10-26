@@ -1,48 +1,44 @@
-users = User.create!([
-                       {
-                         name: 'foo',
-                         email: 'foo@mail.com',
-                         password: 'foobar'
-                       },
-                       {
-                         name: 'bar',
-                         email: 'bar@mail.com',
-                         password: 'foobar'
-                       }
-                     ])
-
-long_body = <<EOF
-This is a long body sample.
-abcdef.
-
-Foo bar bal, hoge fuga piyo.
-
-This is not a something aaaaa.
-Thank you.
-
-This is the additional line 1.
-This is the additional line 2.
-This is the additional line 3.
-
-
-Regards.
-EOF
-
-users.each do |u|
-  u.posts.create!([
-                    {
-                      title: "This is the first sample of user #{u.id}",
-                      body: "Hi, I'm user #{u.id}"
-                    },
-                    {
-                      title: "This is the first sample of user #{u.id}",
-                      body: long_body
-                    }
-                  ])
+def chance?(weight: 40)
+  rand(100) < weight
 end
 
-posts = Post.order('created_at DESC').take(2)
+def generate_body(line_cnt: 10, words_cnt: 20)
+  (1..rand(1..line_cnt))
+    .to_a
+    .map do |i|
+      if i == 1
+        Faker::Lorem.sentence(rand(1..words_cnt))
+      else
+        chance? ? '' : Faker::Lorem.sentence(rand(0..words_cnt))
+      end
+    end
+    .join("\n")
+end
+
+def generate_title(words_cnt: 14)
+  Faker::Lorem.sentence(rand(1..words_cnt))
+end
+
+##########
+# users
+##########
+users = User.create!(
+  (1..4).to_a
+       .map { |i| i == 1 ? 'foo' : Faker::Name.first_name }
+       .map { |n| { name: n, email: "#{n}@mail.com", password: 'passwd' } }
+)
+
+##########
+# posts
+##########
+6.times do
+  users.each { |u| u.posts.create!(title: generate_title, body: generate_body) }
+end
+
+##########
+# replies
+##########
+posts = Post.order('created_at DESC').take(5)
 posts.each do |p|
-  p.replies.create!(body: "This is the sample reply 1 to post #{p.id}", user_id: p.user_id)
-  p.replies.create!(body: "This is the sample reply 2 to post #{p.id}", user_id: p.user_id)
+  users.shuffle.each { |u| p.replies.create!(body: generate_body(line_cnt: 6), user_id: u.id) }
 end
