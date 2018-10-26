@@ -1,14 +1,16 @@
 class PostsController < ApplicationController
   protect_from_forgery except: [:create]
 
+  PAGINATE_PER_PAGE = 4
+
   def index
     @posts = Post.order('created_at DESC')
-                 .paginate(page: params[:page], per_page: 10)
+                 .paginate(page: params[:page], per_page: PAGINATE_PER_PAGE)
   end
 
   def my_posts_index
     @posts = Post.where(user_id: current_user.id).order('created_at DESC')
-                 .paginate(page: params[:page], per_page: 10)
+                 .paginate(page: params[:page], per_page: PAGINATE_PER_PAGE)
     render 'index'
   end
 
