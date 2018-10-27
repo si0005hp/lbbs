@@ -86,6 +86,7 @@ body {
 
     .nav-left {
       float: left;
+      width: 250px;
   
       .nav-item {
         display: inline-block;
@@ -105,10 +106,43 @@ body {
       }
     }
 
+    .nav-center {
+      float: left;
+      width: 700px;
+
+      .global-search-bar {
+        position: relative;
+
+        #global-search-edit {
+          width: 670px;
+          height: 31px;
+          margin: 7px 15px;
+          outline: none;
+          border: 1px solid lightgrey;
+          border-radius: 6px;
+        }
+
+        #global-search-btn {
+          position: absolute;
+          background-image: url("images/search-icon-16.png");
+          background-repeat: no-repeat;
+          background-position : 5px 5px;
+          height: 27px;
+          width: 27px;
+          right: 16px;
+          top: 9px;
+          display: inline-block;
+          cursor: pointer;
+        }
+      }
+    }
+
     .nav-right {
       float: right;
+      width: 250px;
 
       #new-post-btn {
+        float: right;
         width: 70px;
         height: 31px;
         font-size: 1.6rem;

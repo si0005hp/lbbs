@@ -18,17 +18,18 @@ class GlobalSearchBar extends Component {
 
   handleSearchSubmit = (e) => {
     let keyword = this.state.keyword
-    console.log(keyword)
-    location.assign(`/search?keyword=${keyword}`)
+    location.assign(`/posts/search?keyword=${this.state.keyword}`)
   }
 
   render() {
     return (
-      <div id="global-search-bar">
-        <input type="text" name="keyword"
+      <div className="global-search-bar">
+        <input id="global-search-edit" type="text" name="keyword"
           value={this.state.keyword}
           onChange={this.handleInput} />
-        <button onClick={this.handleSearchSubmit}>SEARCH</button>
+        <span id="global-search-btn"
+          onClick={this.handleSearchSubmit}>
+        </span>
       </div>
     )
   }

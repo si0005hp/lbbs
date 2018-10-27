@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import NewPostModal from './NewPostModal';
+import NewPostModal from './NewPostModal'
+import GlobalSearchBar from './GlobalSearchBar'
+
 
 class Header extends Component {
   constructor(props) {
@@ -27,6 +29,9 @@ class Header extends Component {
               <li className="nav-item active"><a href="/">HOME</a></li>
               <li className="nav-item"><a href="/i/posts">MY POSTS</a></li>
             </ul>
+          </nav>
+          <nav className="nav-center">
+            <GlobalSearchBar />
           </nav>
           <nav className="nav-right">
             <ul>
