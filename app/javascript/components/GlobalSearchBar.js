@@ -34,6 +34,7 @@ class GlobalSearchBar extends Component {
       <div className="global-search-bar">
         <input id="global-search-edit" type="text" name="keyword"
           value={this.state.keyword}
+          placeholder="input keyword to search"
           onChange={this.handleInput}
           onKeyDown={this.handleKeyDown} />
         <span id="global-search-btn"
