@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
 
+const RETURN_KEY_CODE = 13
+
 class GlobalSearchBar extends Component {
   constructor(props) {
     super(props)
@@ -21,15 +23,21 @@ class GlobalSearchBar extends Component {
     location.assign(`/posts/search?keyword=${this.state.keyword}`)
   }
 
+  handleKeyDown = (e) => {
+    if (e.keyCode === RETURN_KEY_CODE) {
+      this.handleSearchSubmit()
+    }
+  }
+
   render() {
     return (
       <div className="global-search-bar">
         <input id="global-search-edit" type="text" name="keyword"
           value={this.state.keyword}
-          onChange={this.handleInput} />
+          onChange={this.handleInput}
+          onKeyDown={this.handleKeyDown} />
         <span id="global-search-btn"
-          onClick={this.handleSearchSubmit}>
-        </span>
+          onClick={this.handleSearchSubmit} />
       </div>
     )
   }
