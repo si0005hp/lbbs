@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   devise_for :users
 
   # posts
-  resources :posts
   root 'posts#index'
   get '/i/posts', to: 'posts#my_posts_index'
-  get '/search', to: 'posts#search'
+  get '/posts/search', to: 'posts#search'
+  resources :posts
 
   # reply
   resources :replies
