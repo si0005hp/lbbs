@@ -60,7 +60,7 @@ class NewPostModal extends React.Component {
       .then(res => {
         console.log(res)
         this.props.closeModal()
-        location.reload()
+        location.assign('/')
       })
       .catch(error => AxiosUtils.fail(error))
   }
