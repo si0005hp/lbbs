@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :posts
   root 'posts#index'
   get '/i/posts', to: 'posts#my_posts_index'
+  get '/search', to: 'posts#search'
 
   # reply
   resources :replies
