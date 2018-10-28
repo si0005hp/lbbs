@@ -1,2 +1,5 @@
-<div class="user-info">
+<div class="user-info-container">
+  <%= gravatar_for(current_user, size: 50) %>
+  <h1 id="user-name"><%= current_user.name %></h1>
+  <span id="user-posts-count"><%= pluralize(current_user.posts.count, "post") %></span>
 </div>

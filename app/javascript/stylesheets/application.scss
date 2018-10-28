@@ -255,9 +255,25 @@ body {
   width: 1200px;
   margin: 15px auto;
 
-  .user-info {
+  .user-info-container {
     width: 250px;
     float: left;
+
+    #gravatar-icon {
+      float: left;
+      margin-right: 12px;
+    }
+
+    #user-name {
+      font-size: 1.6rem;
+      font-weight: lighter;
+    }
+
+    #user-posts-count {
+      display: inline-block;
+      font-size: 1.4rem;
+      margin: 5px 0;
+    }
   }
 
   // postsContainer
