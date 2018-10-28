@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NewPostModal from './NewPostModal'
 import GlobalSearchBar from './GlobalSearchBar'
+import AccountMenu from './AccountMenu'
 
 
 class Header extends Component {
@@ -35,7 +36,8 @@ class Header extends Component {
           </nav>
           <nav className="nav-right">
             <ul>
-              <button id="new-post-btn" onClick={this.openModal}>POST</button>
+              <li><button id="new-post-btn" onClick={this.openModal}>POST</button></li>
+              <li><AccountMenu /></li>
             </ul>
           </nav>
         </div>
