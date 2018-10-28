@@ -251,58 +251,68 @@ body {
   }
 }
 
-// postsContainer
-.postsContainer {
-  width: 700px;
+.main-container {
+  width: 1200px;
   margin: 15px auto;
 
-  // post
-  .post {
-    position: relative;
-    display: block;
+  .user-info {
+    width: 250px;
+    float: left;
+  }
+
+  // postsContainer
+  .postsContainer {
     width: 700px;
-    height: 180px;
-    margin-bottom: 20px;
-    padding: 15px;
-    box-shadow: 6px 6px 8px -4px rgba(0, 0, 0, 0.15);
+    margin: auto;
 
-    .title {
-      color: #555;
-      font-size: 1.8rem;
-      line-height: 1.6;
-      text-decoration: none;
-      max-height: 56px;
-      display: inline-block;
-    }
-
-    .body {
-      color: #333;
-      font-size: 1.2rem;
-      line-height: 1.4rem;
-      margin-top: 4px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: pre-wrap;
-    }
-
-    .post-content {
-      overflow: hidden;
-      height: 130px;
-    }
-
-    .clamp {
-      font-size: 1.4rem;
-    }
-
-    .date {
-      position: absolute;
-      right: 15px;
-      bottom: 15px;
-      width: 140px;
-      font-size: 1.1rem;
-      text-align: center;
+    // post
+    .post {
+      position: relative;
       display: block;
-      @include date();
+      width: 700px;
+      height: 180px;
+      margin-bottom: 20px;
+      padding: 15px;
+      box-shadow: 6px 6px 8px -4px rgba(0, 0, 0, 0.15);
+
+      .title {
+        color: #555;
+        font-size: 1.8rem;
+        line-height: 1.6;
+        text-decoration: none;
+        max-height: 56px;
+        display: inline-block;
+      }
+
+      .body {
+        color: #333;
+        font-size: 1.2rem;
+        line-height: 1.4rem;
+        margin-top: 4px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: pre-wrap;
+      }
+
+      .post-content {
+        overflow: hidden;
+        height: 130px;
+      }
+
+      .clamp {
+        font-size: 1.4rem;
+      }
+
+      .date {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+        width: 140px;
+        font-size: 1.1rem;
+        text-align: center;
+        display: block;
+        @include date();
+      }
     }
   }
 }
