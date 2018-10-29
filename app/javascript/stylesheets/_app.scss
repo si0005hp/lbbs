@@ -1,0 +1,526 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.2rem;
+  font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+@mixin color-btn {
+  padding: 0;
+  border-color: transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  text-align: center;
+  letter-spacing: 1px;
+
+  &:disabled {
+    background-color: #cccccc;
+  }
+}
+
+@mixin primary-btn {
+  @include color-btn();
+  background-color: lightseagreen;
+  color: #fff;
+}
+
+@mixin normal-btn {
+  @include color-btn();
+  background-color: #cdd0d3;
+  color: rgb(31, 23, 23);
+}
+
+@mixin date {
+  padding: 4px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+@mixin editbox {
+  width: 100%;
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  outline: none;
+  border: 0.5px solid lightgrey;
+  border-radius: 0;
+  resize: vertical;
+
+  &:focus {
+    box-shadow: 0 0 8px #3663B3 inset;
+  }
+}
+
+@mixin title-editbox {
+  @include editbox();
+}
+
+@mixin body-editbox {
+  @include editbox();
+  height: 180px;
+}
+
+// header
+.header {
+  width: 100%;
+  height: 45px;
+  box-shadow: 0 0 10px 1px #e3e3e3;
+
+  .global-nav-container {
+    max-width: 1200px;
+    margin: auto;
+
+    .nav-left {
+      float: left;
+      width: 250px;
+
+      .nav-item {
+        display: inline-block;
+      }
+
+      .nav-item a {
+        display: inline-block;
+        width: 100px;
+        height: 45px;
+        text-align: center;
+        color: #666;
+        font-size: 1.6rem;
+        line-height: 45px;
+        letter-spacing: 1px;
+        text-decoration: none;
+
+        &:hover {
+          background-color: #f5f5f5;
+        }
+      }
+    }
+
+    .nav-center {
+      float: left;
+      width: 700px;
+
+      .global-search-bar {
+        position: relative;
+
+        #global-search-edit {
+          width: 670px;
+          height: 31px;
+          margin: 7px 15px;
+          outline: none;
+          border: 1px solid lightgrey;
+          border-radius: 6px;
+          padding-left: 8px;
+
+          &:focus {
+            border-color: #66afe9;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+          }
+        }
+
+        #global-search-btn {
+          position: absolute;
+          background-image: url("images/search-icon-16.png");
+          background-repeat: no-repeat;
+          background-position: 5px 5px;
+          height: 27px;
+          width: 27px;
+          right: 16px;
+          top: 9px;
+          display: inline-block;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .nav-right {
+      float: right;
+      width: 250px;
+
+      #account-menu {
+        float: right;
+        width: 90px;
+        margin-right: 5px;
+
+        #menu-toggle {
+          width: 100%;
+          position: relative;
+
+          a {
+            display: inline-block;
+            height: 45px;
+            line-height: 45px;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            text-decoration: none;
+            cursor: pointer;
+          }
+
+          #caret {
+            position: absolute;
+            top: 21px;
+            margin-left: 4px;
+            border-top: solid 4px #000;
+            border-left: solid 4px transparent;
+            border-right: solid 4px transparent;
+          }
+
+          &:hover {
+            a {
+              text-decoration: underline;
+            }
+          }
+        }
+
+        .caret {
+          border-top: solid 4px #000;
+          border-left: solid 4px transparent;
+          border-right: solid 4px transparent;
+        }
+
+        .menu-items-pane {
+          width: 150px;
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+
+          .menu-item {
+            display: inline-block;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            text-decoration: none;
+            padding-left: 15px;
+            color: #333333;
+
+            &:hover {
+              background-color: #f5f5f5;
+            }
+          }
+        }
+      }
+
+      #new-post-btn {
+        float: right;
+        width: 70px;
+        height: 31px;
+        font-size: 1.6rem;
+        line-height: 27px;
+        margin: 7px 0;
+        @include primary-btn();
+      }
+    }
+  }
+}
+
+// NewPostModal
+.new-post-modal-content {
+  width: 660px;
+
+  .new-post-header {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+
+    h1 {
+      font-size: 1.8rem;
+      line-height: 30px;
+      display: inline-block;
+    }
+
+    span {
+      float: right;
+      font-size: 2.8rem;
+      line-height: 30px;
+      padding: 0 5px 0;
+      font-weight: bold;
+      color: #666;
+      cursor: pointer;
+    }
+  }
+
+  .new-post-form {
+    input[type=text] {
+      @include title-editbox();
+    }
+
+    textarea {
+      @include body-editbox();
+    }
+  }
+
+  .new-post-toolbar {
+    width: 100%;
+    height: 30px;
+
+    #new-post-submit-btn {
+      float: right;
+      width: 80px;
+      height: 100%;
+      font-size: 1.6rem;
+      line-height: 26px;
+      @include primary-btn();
+    }
+  }
+}
+
+.main-container {
+  width: 1200px;
+  margin: 15px auto;
+
+  .user-info-container {
+    width: 250px;
+    float: left;
+
+    #gravatar-icon {
+      float: left;
+      margin-right: 12px;
+    }
+
+    #user-name {
+      font-size: 1.6rem;
+      font-weight: lighter;
+    }
+
+    #user-posts-count {
+      display: inline-block;
+      font-size: 1.4rem;
+      margin: 5px 0;
+    }
+  }
+
+  // postsContainer
+  .postsContainer {
+    width: 700px;
+    margin: auto;
+
+    // post
+    .post {
+      position: relative;
+      display: block;
+      width: 700px;
+      height: 180px;
+      margin-bottom: 20px;
+      padding: 15px;
+      box-shadow: 6px 6px 8px -4px rgba(0, 0, 0, 0.15);
+
+      .title {
+        color: #555;
+        font-size: 1.8rem;
+        line-height: 1.6;
+        text-decoration: none;
+        max-height: 56px;
+        display: inline-block;
+      }
+
+      .body {
+        color: #333;
+        font-size: 1.2rem;
+        line-height: 1.4rem;
+        margin-top: 4px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: pre-wrap;
+      }
+
+      .post-content {
+        overflow: hidden;
+        height: 130px;
+      }
+
+      .clamp {
+        font-size: 1.4rem;
+      }
+
+      .date {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+        width: 140px;
+        font-size: 1.1rem;
+        text-align: center;
+        display: block;
+        @include date();
+      }
+    }
+  }
+}
+
+// post-detail
+.post-detail {
+  width: 700px;
+  margin: auto;
+
+  @mixin post-detail-action-btn {
+    float: left;
+    color: #337ab7;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+
+    &:hover {
+      color: #23527c;
+      text-decoration: underline;
+    }
+  }
+
+  @mixin post-detail-editing-update-btn {
+    float: right;
+    width: 70px;
+    font-size: 1.2rem;
+    line-height: 2;
+    margin: 0 2px 12px 0;
+    @include primary-btn();
+  }
+
+  @mixin post-detail-editing-cancel-btn {
+    float: right;
+    width: 70px;
+    font-size: 1.2rem;
+    line-height: 2;
+    margin-bottom: 12px;
+    @include normal-btn();
+  }
+
+  .post-detail-root {
+    .title {
+      color: #555;
+      font-size: 2.4rem;
+      text-decoration: none;
+      margin: 20px 0;
+    }
+
+    .body {
+      color: #333;
+      font-size: 1.6rem;
+      margin: 25px 0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .date {
+      font-size: 1.2rem;
+      float: right;
+      @include date();
+    }
+
+    #post-detail-reply-btn {
+      @include post-detail-action-btn();
+      padding: 4px 4px 4px 0;
+    }
+
+    #post-detail-edit-btn,
+    #post-detail-delete-btn {
+      @include post-detail-action-btn();
+      padding: 4px;
+    }
+
+    input[type=text] {
+      @include title-editbox();
+    }
+
+    textarea {
+      @include body-editbox();
+    }
+
+    #post-detail-editing-update-btn {
+      @include post-detail-editing-update-btn();
+    }
+
+    #post-detail-editing-cancel-btn {
+      @include post-detail-editing-cancel-btn();
+    }
+  }
+
+  .post-reply {
+    .body {
+      color: #333;
+      font-size: 1.4rem;
+      margin: 15px 0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .date {
+      font-size: 1.2rem;
+      float: right;
+      @include date();
+    }
+
+    .post-reply-edit-btn {
+      @include post-detail-action-btn();
+      padding: 4px 4px 4px 0;
+    }
+
+    .post-reply-delete-btn {
+      @include post-detail-action-btn();
+      padding: 4px;
+    }
+
+    textarea {
+      @include body-editbox();
+    }
+
+    .post-reply-editing-update-btn {
+      @include post-detail-editing-update-btn();
+    }
+
+    .post-reply-editing-cancel-btn {
+      @include post-detail-editing-cancel-btn();
+    }
+  }
+
+  .post-detail-replying {
+    textarea {
+      @include body-editbox();
+    }
+
+    #post-detail-replying-update-btn {
+      @include post-detail-editing-update-btn();
+    }
+
+    #post-detail-replying-cancel-btn {
+      @include post-detail-editing-cancel-btn();
+    }
+  }
+}
+
+.pagination {
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  display: inline-block;
+  border-radius: 2px;
+  margin: 15px 0;
+
+  a,
+  em,
+  span {
+    color: #666;
+    float: left;
+    text-decoration: none;
+    // border: 1px solid #ddd;
+    padding: 10px;
+  }
+
+  span {
+    cursor: not-allowed;
+  }
+
+  .current {
+    border-color: #d9edf7;
+    background-color: #d9edf7;
+  }
+}
