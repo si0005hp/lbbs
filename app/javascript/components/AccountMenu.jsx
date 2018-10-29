@@ -24,7 +24,10 @@ class AccountMenu extends Component {
   render() {
     return (
       <div id="account-menu">
-        <a id="menu-toggle" onClick={this.showMenu}>Account</a>
+        <div id="menu-toggle">
+          <a onClick={this.showMenu}>Account</a>
+          <b id="caret"></b>
+        </div>
         {
           this.state.showMenu
             ? (

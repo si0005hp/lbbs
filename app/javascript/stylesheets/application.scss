@@ -156,16 +156,42 @@ body {
       #account-menu {
         float: right;
         width: 90px;
+        margin-right: 5px;
 
         #menu-toggle {
-          display: inline-block;
           width: 100%;
-          height: 45px;
-          line-height: 45px;
-          font-size: 1.6rem;
-          letter-spacing: 1px;
-          text-decoration: none;
-          cursor: pointer;
+          position: relative;
+
+          a {
+            display: inline-block;
+            height: 45px;
+            line-height: 45px;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            text-decoration: none;
+            cursor: pointer;
+          }
+
+          #caret {
+            position: absolute;
+            top: 21px;
+            margin-left: 4px;
+            border-top: solid 4px #000;
+            border-left: solid 4px transparent;
+            border-right: solid 4px transparent;
+          }
+
+          &:hover {
+            a {
+              text-decoration: underline;
+            }
+          }
+        }
+
+        .caret {
+          border-top: solid 4px #000;
+          border-left: solid 4px transparent;
+          border-right: solid 4px transparent;
         }
 
         .menu-items-pane {
