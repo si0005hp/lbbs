@@ -1,1 +1,44 @@
 @import "app";
+
+.devise-user-edit-page-container {
+  position: absolute;
+  top: 200px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+
+  width: 555px;
+  margin: auto;
+
+  color: #666;
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  input[type=email],
+  input[type=password] {
+    @include editbox();
+    margin: 20px 0;
+  }
+
+  input[type=submit] {
+    font-size: 1.6rem;
+    padding: 3px 8px;
+    @include primary-btn();
+  }
+
+  p {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    margin: 25px 0 5px 0;
+  }
+
+  a {
+    display: inline-block;
+    color: #337ab7;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-top: 15px;
+  }
+}
