@@ -1,24 +1,36 @@
-# README
+# LBBS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A tiny web application for the learning/catch-up purpose of [Rails](https://rubyonrails.org) and [React](https://reactjs.org/).  
+(The name comes from `Light BBS`.)
 
-Things you may want to cover:
 
-* Ruby version
+Implemented functionalities are:
 
-* System dependencies
+* Login mechanism based on the simple user account registration
+* Submitting `posts` and `replies` as the basic function of general BBS
+* Search `posts` by specific keyword (using full text search)
 
-* Configuration
+![main_page](screenshots/main_page.png)
+![main_page](screenshots/detail_page.png)
 
-* Database creation
 
-* Database initialization
+## How to run
 
-* How to run the test suite
+(Supposed only Linux environment)
+```
+bundle install
+rails db:migrate 
 
-* Services (job queues, cache servers, search engines, etc.)
+# Requires elasticsearch
+docker run -d --name es -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.4.2
 
-* Deployment instructions
+# Loading test data
+rails db:seed && rails searchkick:reindex CLASS=Post CLASS=Reply
 
-* ...
+foreman start
+```
+
+## Spacial Thanks
+https://railstutorial.org/  
+https://www.sitepoint.com/react-rails-5-1/  
+
