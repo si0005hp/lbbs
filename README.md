@@ -25,7 +25,7 @@ rails db:migrate
 docker run -d --name es -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.4.2
 
 # Loading test data
-rails db:seed && rails searchkick:reindex CLASS=Post CLASS=Reply
+rails db:seed && rails searchkick:reindex:all
 
 foreman start
 ```
