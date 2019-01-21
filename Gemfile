@@ -65,3 +65,5 @@ gem 'will_paginate'
 gem 'faker'
 
 gem 'searchkick'
+
+gem 'pg'

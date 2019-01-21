@@ -1,9 +1,4 @@
 # SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
 default: &default
   adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -13,13 +8,18 @@ development:
   <<: *default
   database: db/lbbs_db_development.sqlite3
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
   <<: *default
   database: db/lbbs_db_test.sqlite3
 
+# production:
+#   <<: *default
+#   database: db/lbbs_db_production.sqlite3
 production:
-  <<: *default
-  database: db/lbbs_db_production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: postgres
+  password: ENV['LBBS_DB_PRODUCTION_PASSWORD'].present?
+  pool: 5
+  database: lbbs_db_production
