@@ -67,3 +67,5 @@ gem 'faker'
 gem 'searchkick'
 
 gem 'pg'
+
+gem 'sidekiq'

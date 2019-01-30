@@ -48,6 +48,11 @@ class PostsController < ApplicationController
     @user_id = current_user.id
   end
 
+  def batch
+    PostBatchWorker.perform_async(current_user.id)
+    render plain: "[OK] Scheduled batch job."
+  end
+
   private
 
   def post_params
